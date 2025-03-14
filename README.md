@@ -69,3 +69,31 @@
 
   </details>
 </details>
+
+## Conclusion
+Dilihat dari gambar diatas, dapat disimpulkan bahwa terdapat kemajuan drastis setelah kode dioptimisasi.
+Jika digeneralisasikan, proses pengambilan data pada setiap endpoint mengalami percepatan sebesar 50% hingga 92%.
+Hal tersebut menunjukan bahwa proses optimisasi menggunakan profiling berdampak besar pada performa dari sistem untuk mengurangi bottleneck dan waktu kinerja.
+
+### 
+
+# Reflection
+1. **What is the difference between the approach of performance testing with JMeter and profiling with IntelliJ Profiler in the context of optimizing application performance?**  
+   JMeter mensimulasikan pengguna dalam jumlah tertentu, menghasilkan *load*, dan menghitung waktu response, throughput, dan perilaku sistem dibawah tekanan. _Approach_ ini membantu mengidentifikasi masalah skalabilitas dan konkurensi.
+   Sedangkan, IntelliJ Profiler digunakan untuk memberikan informasi mendalam mengenai penggunaan CPU, konsumsi memori, dan aktivitas _thread_ pada kode. _Approach_ ini membantu mendeteksi kelemahan kinerja pada kode agar dapat dioptimisasi secara efektif.
+2. **How does the profiling process help you in identifying and understanding the weak points in your application?**  
+   Profiling menyediakan metrik waktu tentang waktu eksekusi metode, alokasi memori, dan perilaku thread.
+   Hal tersebut memungkinkan analisis mendalam terhadap kelemahan kinerja, seperti loop yang tidak efisien, pembuatan objek yang tidak perlu, atau keterlambatan pada kueri basis data.
+   Dengan menganalisis flame graph dan data CPU sampling, kita dapat mengidentifikasi masalah dalam kode yang mempengaruhi kinerja.
+3. **Do you think IntelliJ Profiler is effective in assisting you to analyze and identify bottlenecks in your application code?**  
+   _Bottlenecks_ umumnya disebabkan oleh proses yang membutuhkan CPU dan memori yang berlebih, namun dibatasi oleh kapasitas kinerja komputer. IntelliJ Profile dalam memberikan _insight_ terhadap penggunaan CPU dan memori, yang memungkinkan _developer_ dapat memahami bagaimana aplikasi mengonsumsi sumber daya.
+   Namun, perlu disari bahwa IntelliJ profiler tidak selalu mencerminkan masalah beban dunia nyata, sehingga JMeter dapat dijadikan pelengkap dalam pengujian kinerja.
+4. **What are the main challenges you face when conducting performance testing and profiling, and how do you overcome these challenges?**  
+   Performance testing dan profiling menjadi tantangan utama saya daat melakukan identifikasi bottleneck. Saya kebingungan untuk memahami bagian dari kode yang menjadi bottleneck. Hal ini disebabkan oleh banyaknya data yang dihasilkan, dan antarmuka yang tidak biasa saya jumpai.
+   Cara saya menanganinya adalah dengan mencoba memahami hasil output tools, sehingga dapat menyimpulkan hasil yang didapat dari tools tersebut untuk mengoptimisasi program.
+5. **What are the main benefits you gain from using IntelliJ Profiler for profiling your application code?**  
+   IntelliJ Porfiler memampukan kita sebagai developer untuk mengindentifikasi kelemahan kinerja melalui penggunaan CPU, konsumsi meomri, dan aktivitas _thread_. Selain itu, melalui hasil, kita dapat langsung diarahkan kepada source code yang menyebabkan masalah kinerja tersebut, sehingga tidak butuh untuk navigasi codebase lagi.
+6. **How do you handle situations where the results from profiling with IntelliJ Profiler are not entirely consistent with findings from performance testing using JMeter?**  
+   Disaat dihadapi situasi ketidakkonsistenan seperti diatas, perlu kita sadari bahwa kedua tools memiliki _approach_ yang berbeda. Intellij mengukur konsumi memori dan CPU sedangkan JMeter mengukur perilaku sistem dibawah tekanan. Ketidakkonsistenan ini dapat diatas dengan menguji program yang diisolasi pada suatu container. Contoh container yang dapat digunakan adalah docker.
+7. **What strategies do you implement in optimizing application code after analyzing results from performance testing and profiling? How do you ensure the changes you make do not affect the application's functionality?**  
+   Strategi saya dalam optimisasi kode dimulai dengan memahi alur kerja blok kode yang bermasalah. Kemudian, mengidentifikasi kode yang terkesan redundan dan dapat diganti dengan kode yang lebih efektif. Kode tersebut divalidasi lagi untuk memastikan tetap bekerja sesuai tujuan dan kinerjanya mengalami peningkatan. Unit test dapat digunakan untuk meminimalisir usaha dalam melakukan test yang secara berulang untuk memastikan kode berjalan seperti tujuan.
